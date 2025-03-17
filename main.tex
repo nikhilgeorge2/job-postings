@@ -5,6 +5,16 @@
 \usepackage{amsmath}
 \usepackage{booktabs}
 \usepackage{caption}
+\usepackage{tikz}
+\usepackage{colortbl, tcolorbox}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+
+% Define custom colors for the box background and frame
+\definecolor{boxbackground}{rgb}{0.95, 0.95, 0.95}
+\definecolor{boxframe}{rgb}{0.0, 0.0, 0.0}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
 
 \title[Job Posting Skill Measures]{How Informative are Job Posting Skill Measures?\\Evidence from Selection Decisions}
 \author{Nikhil George \and Ramayya Krishnan \and Rahul Telang}
@@ -77,7 +87,7 @@
     \end{itemize}
     \item \textbf{Key findings}
     \begin{itemize}
-        \item \textcolor{green}{84\% higher} selection probability for closest skill matches
+        \item \textcolor{green}{84\%} higher selection probability for closest skill matches
         \item \textcolor{green}{70\%} of multi-applicant vacancies select closest candidate
         \item Job text outperforms traditional HR metrics (AUC \textcolor{green}{0.62} vs. \textcolor{red}{0.50})
     \end{itemize}
@@ -101,9 +111,9 @@ Prior work focuses on \textcolor{orange}{extraction}, not \textcolor{orange}{val
     \end{itemize}
 \end{itemize}
 
-\begin{block}{Our Breakthrough}
-Outcome-grounded validation: Not just what skills are listed, but which ones actually matter
-\end{block}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Our Breakthrough:} Outcome-grounded validation: Not just what skills are listed, but which ones actually matter
+\end{tcolorbox}
 \end{frame}
 
 \begin{frame}{Research Setting \& Data}
@@ -122,44 +132,44 @@ Outcome-grounded validation: Not just what skills are listed, but which ones act
     \end{itemize}
 \end{itemize}
 
-\begin{block}{Key Advantage}
-Ability to measure skill distance between current and target roles
-\end{block}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Key Advantage:} Ability to measure skill distance between current and target roles
+\end{tcolorbox}
 \end{frame}
 
 \begin{frame}{Sample Job Postings Comparison}
 \begin{columns}
 \begin{column}{0.48\textwidth}
-\begin{block}{Close Match (Selected)}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Close Match (Selected)}
 \begin{itemize}
     \item Position: Data Engineer
     \item Shared skills: Data modeling, ETL, SQL
     \item Distance drivers: Limited architecture experience
 \end{itemize}
-\end{block}
+\end{tcolorbox}
 \end{column}
 \begin{column}{0.48\textwidth}
-\begin{block}{Distant Match (Not Selected)}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Distant Match (Not Selected)}
 \begin{itemize}
     \item Position: Full-Stack Developer
     \item Missing skills: Data warehousing, dimensional modeling
     \item Different focus: UI/UX vs. backend data
 \end{itemize}
-\end{block}
+\end{tcolorbox}
 \end{column}
 \end{columns}
 
 \vspace{0.5cm}
-\begin{center}
-\fbox{\parbox{0.9\textwidth}{
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
 \centering
 \textbf{Box 2.2 Sample Job Description}\\
 \small
 \textbf{Hadoop developer} for multiple initiatives. Experience in Capacity Planning, Cluster Designing. Develop Big Data Strategy and Roadmap. \\
 \textbf{Mandatory Skills:} Hadoop stack (HDFS, MapReduce, Yarn, HIVE, sqoop), Cloudera, NoSQL\\
 \textbf{Desired Skills:} Kafka, R, Python, Tableau, Data Lake with Cloudera ecosystem
-}}
-\end{center}
+\end{tcolorbox}
 \end{frame}
 
 \begin{frame}{Conceptual Framework}
@@ -169,9 +179,9 @@ Ability to measure skill distance between current and target roles
     \item Skill alignment between current and target roles predicts outcomes
 \end{itemize}
 
-\begin{block}{Key Insight}
-When an applicant seeks a position that is ``distant'' in required skills from their current job, they have lower probability of being selected
-\end{block}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Key Insight:} When an applicant seeks a position that is ``distant'' in required skills from their current job, they have lower probability of being selected
+\end{tcolorbox}
 
 \begin{table}
 \centering
@@ -209,12 +219,30 @@ High (distant match) & Low \\
 \end{enumerate}
 \end{column}
 \begin{column}{0.5\textwidth}
-% Figure from the paper
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figure1.png}
+% Placeholder for the figure
+\begin{tikzpicture}[node distance=1.2cm, auto, thick, scale=0.7, every node/.style={scale=0.7}]
+    % Styles for boxes and arrows
+    \tikzstyle{box} = [rectangle, draw, text width=2.5cm, text centered, minimum height=1cm]
+    \tikzstyle{arrow} = [thick,->,>=stealth]
+    \tikzstyle{dotted arrow} = [thick,->,>=stealth,dotted]
+    
+    % Nodes
+    \node[box] (embeddings) {1. Job Posting Embedding (SBERT)};
+    \node[box, right=of embeddings] (reduction) {2. Dimension Reduction};
+    \node[box, right=of reduction] (metric) {3. Distance Metric};
+    \node[box, right=of metric] (auc) {4. AUC};
+    
+    % Text below metric box
+    \node[below=1cm of metric] (notation) {\{$j_i$\}$_{k}$, M$_{k \times k}$};
+    
+    % Arrows
+    \draw[arrow] (embeddings) -- node[above] {384d} (reduction);
+    \draw[arrow] (reduction) -- node[above] {k} (metric);
+    \draw[arrow] (metric) -- (auc);
+    \draw[dotted arrow] (auc) to[bend right] node[midway, below] {Tune dimension} (reduction);
+    \draw[arrow] (metric) -- (notation);
+\end{tikzpicture}
 \caption*{Overview of measurement approach}
-\end{figure}
 \end{column}
 \end{columns}
 \end{frame}
@@ -236,21 +264,22 @@ High (distant match) & Low \\
     \end{itemize}
 \end{itemize}
 
-\begin{block}{Strength: Domain Adaptation}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Strength: Domain Adaptation}\\
 Generic embeddings treat all skills equally, metric learning \textcolor{orange}{tailors to firm context}
-\end{block}
+\end{tcolorbox}
 \end{column}
 \begin{column}{0.48\textwidth}
-% Figure from the paper
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figure2.png}
-\caption*{Vectorization process}
-\end{figure}
+% Placeholder for the figure
+\begin{tikzpicture}
+\node at (2,2) {Vectorization process};
+\draw (0,0) rectangle (4,4);
+\end{tikzpicture}
 
-\begin{block}{Limitation: Context Dependency}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Limitation: Context Dependency}\\
 Reflects historical patterns, could perpetuate biases
-\end{block}
+\end{tcolorbox}
 \end{column}
 \end{columns}
 \end{frame}
@@ -271,9 +300,10 @@ HR variables & \textcolor{red}{0.500} & No power \\
 \end{tabular}
 \end{table}
 
-\begin{block}{Key Finding}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Key Finding:}\\
 Job posting content has significant predictive power, outperforming traditional HR variables
-\end{block}
+\end{tcolorbox}
 
 \begin{itemize}
     \item Metric learning adds substantial value over generic embeddings
@@ -281,12 +311,16 @@ Job posting content has significant predictive power, outperforming traditional 
 \end{itemize}
 \end{column}
 \begin{column}{0.48\textwidth}
-% Figure from the paper
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figure3.png}
+% Placeholder for the figure
+\begin{tikzpicture}
+\draw[->] (0,0) -- (4,0) node[right] {Dimensions};
+\draw[->] (0,0) -- (0,4) node[above] {AUC};
+\draw[thick, color=blue] (0.5,1.5) to[out=30, in=180] (2,3) to[out=0, in=150] (3.5,3.2);
+\node[right] at (3.5,3.2) {0.62};
+\draw[dashed, color=red] (0,2.5) -- (4,2.5);
+\node[left] at (0,2.5) {0.50};
+\end{tikzpicture}
 \caption*{Cross-validated AUC scores across dimensionalities}
-\end{figure}
 \end{column}
 \end{columns}
 \end{frame}
@@ -294,9 +328,10 @@ Job posting content has significant predictive power, outperforming traditional 
 \begin{frame}{Selection Probability and Skill Distance}
 \begin{columns}
 \begin{column}{0.45\textwidth}
-\begin{block}{Key Result}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Key Result:}\\
 Selection probability in closest skill distance quintile is \textcolor{green}{84\% higher} compared to furthest quintile
-\end{block}
+\end{tcolorbox}
 
 \begin{itemize}
     \item Clear monotonic decline across quintiles
@@ -305,12 +340,20 @@ Selection probability in closest skill distance quintile is \textcolor{green}{84
 \end{itemize}
 \end{column}
 \begin{column}{0.55\textwidth}
-% Figure from the paper
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figure4.png}
+% Placeholder for the figure
+\begin{tikzpicture}
+\draw[->] (0,0) -- (5,0) node[right] {Distance Quintile};
+\draw[->] (0,0) -- (0,4) node[above] {Selection Probability};
+\foreach \x/\y/\lab in {0.5/3.5/1, 1.5/2.8/2, 2.5/2.3/3, 3.5/1.7/4, 4.5/1.2/5} {
+    \fill[blue] (\x,\y) circle (0.2);
+    \node[below] at (\x,0) {\lab};
+}
+\draw[thick, blue] (0.5,3.5) -- (1.5,2.8) -- (2.5,2.3) -- (3.5,1.7) -- (4.5,1.2);
+\foreach \y/\lab in {1/20\%, 2/40\%, 3/60\%, 4/80\%} {
+    \draw (0,\y) -- (-0.1,\y) node[left] {\lab};
+}
+\end{tikzpicture}
 \caption*{Selection Probability by Skill Distance Quintile}
-\end{figure}
 \end{column}
 \end{columns}
 \end{frame}
@@ -318,22 +361,24 @@ Selection probability in closest skill distance quintile is \textcolor{green}{84
 \begin{frame}{Causal Evidence from Quasi-Experiments}
 \begin{columns}
 \begin{column}{0.48\textwidth}
-\begin{block}{Within-Vacancy Comparisons}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Within-Vacancy Comparisons}
 \begin{itemize}
     \item 261 vacancies with multiple applicants
     \item \textcolor{green}{70\%} select candidate with shortest distance
     \item \textcolor{red}{35\% lower odds} per quintile increase in distance
 \end{itemize}
-\end{block}
+\end{tcolorbox}
 \end{column}
 \begin{column}{0.48\textwidth}
-\begin{block}{Within-Applicant Comparisons}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Within-Applicant Comparisons}
 \begin{itemize}
     \item 33 applicants with multiple applications
     \item \textcolor{red}{50\% lower odds} for more distant roles
     \item Controls for individual traits
 \end{itemize}
-\end{block}
+\end{tcolorbox}
 \end{column}
 \end{columns}
 
@@ -374,12 +419,19 @@ Within-Applicant & Applicant-specific factors (quality, experience) \\
 \end{itemize}
 \end{column}
 \begin{column}{0.48\textwidth}
-% Figure from the paper
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figure5.png}
+% Placeholder for the figure
+\begin{tikzpicture}
+\draw[->] (0,0) -- (5,0) node[right] {Average Skill Distance};
+\draw[->] (0,0) -- (0,3) node[above] {Density};
+\draw[thick, blue, smooth] plot coordinates {
+    (0.5,0.2) (1,0.5) (1.5,1.2) (2,2.5) (2.5,1.8) (3,1.0) (3.5,0.7) (4,0.3) (4.5,0.1)
+};
+\draw[dashed] (2,0) -- (2,2.5);
+\node[below] at (2,0) {Median};
+\node[above left] at (1.5,1.2) {Low distance};
+\node[above right] at (3,1.0) {High distance};
+\end{tikzpicture}
 \caption*{Distribution of Average Skill Distance}
-\end{figure}
 \end{column}
 \end{columns}
 \end{frame}
@@ -419,13 +471,15 @@ NLP/ML & Demonstrates domain adaptation of language models \\
 \end{frame}
 
 \begin{frame}{Methodological Innovation}
-\begin{block}{Prior Assumptions}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Prior Assumptions:}
 Job postings are aspirational or generic, best analyzed with one-size-fits-all models
-\end{block}
+\end{tcolorbox}
 
-\begin{block}{Our Approach}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Our Approach:}
 Learn from real selection decisions what aspects of postings actually matter
-\end{block}
+\end{tcolorbox}
 
 \begin{table}
 \centering
@@ -450,13 +504,14 @@ Framework is generalizable to other domains requiring context-specific language 
     \item Informativeness maximized by combining generic embeddings with firm-specific outcomes
 \end{itemize}
 
-\begin{block}{Opens New Lens on Labor Markets}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Opens New Lens on Labor Markets}
 \begin{itemize}
     \item Skill distance shapes search behavior and outcomes
     \item Enables data-driven workforce strategies
     \item Strengthens case for skills-first hiring approaches
 \end{itemize}
-\end{block}
+\end{tcolorbox}
 
 Our validation transforms job postings from static text into a dynamic, validated signal for labor market decisions
 \end{frame}
