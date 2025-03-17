@@ -1,0 +1,588 @@
+\documentclass[11pt,xcolor={dvipsnames},hyperref={pdftex,pdfpagemode=UseNone,hidelinks,pdfdisplaydoctitle=true},usepdftitle=false]{beamer}
+\usepackage{presentation}
+
+% Enter presentation title to populate PDF metadata:
+\hypersetup{pdftitle={How Informative are Job Posting Skill Measures? Evidence from Selection Decisions}}
+
+% Enter path to PDF file with figures:
+\newcommand{\pdf}{figures.pdf}
+
+\begin{document}
+
+% Enter title:
+\title{How Informative are Job Posting Skill Measures?\\
+Evidence from Selection Decisions}
+
+\information
+%
+% Enter URL to research paper (can be commented out):
+%[https://github.com/nikhilg/job-postings-paper]
+%
+% Enter authors:
+{Nikhil George, Ramayya Krishnan, Rahul Telang}
+%
+% Enter location and date (can be commented out):
+{Carnegie Mellon University}
+
+\frame{\titlepage}
+
+% Enter content of presentation:
+
+\begin{frame}
+\frametitle{Motivation}
+\begin{itemize}
+\item \textbf{Skills-first hiring revolution}
+  \begin{itemize}
+  \item Google, IBM, Walmart prioritize capabilities over credentials (Fuller et al., 2022; WEF, 2020)
+  \item Reducing emphasis on credentials in favor of capabilities
+  \end{itemize}
+
+\item \textbf{Critical yet unproven infrastructure}
+  \begin{itemize}
+  \item Powers algorithms (LinkedIn, Indeed), HR analytics, policy decisions
+  \item Assumed to reflect skill demands, but \al{no validation against outcomes}
+  \end{itemize}
+
+\item \textbf{Stakes}
+  \begin{itemize}
+  \item If uninformative: Undermines billion-dollar HR tech ecosystem
+  \item If valid: Unlocks precision in labor markets
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Core Gap}
+\begin{itemize}
+\item \textbf{Skepticism}
+  \begin{itemize}
+  \item Postings may be aspirational, templated, or inflated with "nice-to-have" skills
+  \item Perhaps postings reflect ideal candidates rather than minimal requirements
+  \end{itemize}
+
+\item \textbf{Validation imperative}
+  \begin{itemize}
+  \item Firms invest in parsing job text—but is it meaningful?
+  \item Research relies on posting data without outcome grounding
+  \end{itemize}
+
+\item \textbf{Critical knowledge gap}
+  \begin{itemize}
+  \item Do skill measures derived from job postings predict actual hiring decisions?
+  \item How informative are postings relative to traditional HR metrics?
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Research Questions}
+\begin{enumerate}
+\item \textbf{Validation}: Can skill distance measures built on job postings be validated against selection decisions?
+
+\item \textbf{Informativeness}: How does posting-derived information compare to traditional HR metrics?
+
+\item \textbf{Application}: Can analytics built on job postings open up new insights about human capital management?
+\end{enumerate}
+\end{frame}
+
+\heading{Research Contribution}
+
+\begin{frame}
+\frametitle{First Empirical Validation of Job Posting Informativeness}
+\begin{itemize}
+\item \textbf{Novel approach}
+  \begin{itemize}
+  \item Skill distance metric derived \al{solely from job text}
+  \item Validated against \al{actual selection decisions} (1,370 internal applications)
+  \end{itemize}
+
+\item \textbf{Unique dataset}
+  \begin{itemize}
+  \item IT division of major U.S. financial institution
+  \item 8,180 job vacancy postings (2018–2021)
+  \item 650 selections, 720 rejections with complete histories
+  \end{itemize}
+
+\item \textbf{Key findings}
+  \begin{itemize}
+  \item \alg{84\% higher} selection probability for closest skill matches
+  \item \alg{70\%} of multi-applicant vacancies select the closest candidate
+  \item Job text outperforms traditional HR metrics (AUC \alg{0.62} vs. \alr{0.50})
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Literature: A Gap in Validation}
+\begin{itemize}
+\item \textbf{Taxonomy-based approaches} (O*NET, ESCO)
+  \begin{itemize}
+  \item Static, subjective, misses contextual nuance
+  \item Limited by predefined skill categories
+  \end{itemize}
+
+\item \textbf{Collaborative filtering methods} (LinkedIn)
+  \begin{itemize}
+  \item Co-occurrence $\neq$ predictive validity
+  \item Learns from patterns, not outcomes
+  \end{itemize}
+
+\item \textbf{Credential-based proxies}
+  \begin{itemize}
+  \item Losing relevance in skills-first hiring
+  \item Coarse-grained, indirect measures
+  \end{itemize}
+\end{itemize}
+
+\begin{block}{Our Breakthrough}
+\begin{itemize}
+\item \textbf{Outcome-grounded validation} links text to real decisions
+\item \al{Not just what skills are listed, but which ones actually matter}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Research Setting \& Data}
+\begin{itemize}
+\item \textbf{IT division of major U.S. financial institution}
+  \begin{itemize}
+  \item Technology roles with precise skill requirements
+  \item Structured internal mobility process
+  \end{itemize}
+
+\item \textbf{Unique proprietary dataset}
+  \begin{itemize}
+  \item 8,180 job vacancy postings (2018–2021)
+  \item 1,370 internal applications
+    \begin{itemize}
+    \item 650 selections
+    \item 720 rejections
+    \end{itemize}
+  \item Complete application histories
+  \item Linked current and target job descriptions
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sample Job Postings Comparison}
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
+\centering
+\textbf{Target Position:} \\
+Senior Data Architect
+}}
+\end{center}
+
+\vspace{0.5em}
+
+\begin{columns}
+\begin{column}{0.48\textwidth}
+\begin{block}{Close Match (selected)}
+\begin{itemize}
+\item \textbf{Position:} Data Engineer
+\item \textbf{Shared skills:} Data modeling, ETL processes, SQL
+\item \textbf{Key distance drivers:} Limited enterprise architecture experience
+\end{itemize}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Distant Match (not selected)}
+\begin{itemize}
+\item \textbf{Position:} Full-Stack Developer
+\item \textbf{Missing critical skills:} Data warehousing, dimensional modeling
+\item \textbf{Different domain emphasis:} UI/UX vs. backend data systems
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Conceptual Framework}
+\begin{itemize}
+\item Job descriptions encode skill requirements that matter for selection
+\item Selection decisions reveal which aspects of postings are most important
+\item Skill alignment between current and target roles predicts outcomes
+\end{itemize}
+
+\begin{block}{Formalized}
+\begin{itemize}
+\item When an applicant seeks a position that is 'distant' in required skills from their current job, they have lower probability of being selected
+\item Selection probability decreases with skill distance
+\item This relationship validates job posting content as meaningful
+\end{itemize}
+\end{block}
+\end{frame}
+
+\heading{Methodology}
+
+\begin{frame}
+\frametitle{Methodological Pipeline}
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
+\centering
+\textbf{[INSERT FIGURE 1 FROM PAPER]} \\
+Pipeline showing embeddings → dimension reduction → metric learning → validation
+}}
+\end{center}
+
+\begin{enumerate}
+\item \textbf{Embeddings:} SBERT captures semantic richness of job text
+\item \textbf{Dimension Reduction:} PCA + Fuzzy C-Means clustering
+\item \textbf{Metric Learning:}
+\begin{itemize}
+\item Reweights dimensions (Mahalanobis matrix \al{M}) to reflect \al{what the firm historically valued}
+\item Example: Stretches "Hadoop" dimension if critical for past hires
+\end{itemize}
+\item \textbf{Validation:} AUC 0.62 on held-out data
+\end{enumerate}
+
+\begin{block}{Key Nuance}
+\begin{itemize}
+\item \textbf{Maximizing informativeness:} Generic embeddings (ubiquitous) + firm-specific outcomes (rare)
+\item Without selection data, embeddings remain noisy; with it, we isolate \al{actionable signals}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Metric Learning: Optimization}
+\begin{align*}
+\text{Distance between jobs } j_c \text{ and } j_v: \\
+d(j_c, j_v; M) = \sqrt{(j_c - j_v)^T M (j_c - j_v)}
+\end{align*}
+
+\begin{block}{Optimization Problem}
+\begin{align*}
+\text{Maximize: } & \sum_{(c,v): s_{c,v}=0} d(j_c, j_v; M) \\
+\text{Subject to: } & \sum_{(c,v): s_{c,v}=1} d(j_c, j_v; M)^2 \leq 1 \\
+& M \succeq 0
+\end{align*}
+\end{block}
+
+\textbf{Intuition:} Learn distance metric that maximizes distance between non-selected pairs while constraining distance between selected pairs (Xing et al. 2002)
+\end{frame}
+
+\begin{frame}
+\frametitle{Metric Learning: Strengths and Limitations}
+\begin{columns}
+\begin{column}{0.48\textwidth}
+\begin{block}{Key Strengths}
+\begin{itemize}
+\item \textbf{Domain-Specific Adaptation}
+\begin{itemize}
+\item Tailors generic embeddings to firm's unique context
+\item Explains performance gain (AUC \alg{0.62} vs. \alr{0.56} for cosine similarity)
+\end{itemize}
+
+\item \textbf{Empirical Validation}
+\begin{itemize}
+\item Grounds measurement in actual decisions
+\item Reveals what skills \al{do} matter vs. what \al{should} matter
+\end{itemize}
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{block}{Potential Limitation}
+\begin{itemize}
+\item \textbf{Context Dependency}
+\begin{itemize}
+\item Reflects historical hiring patterns
+\item Could perpetuate biases in past decisions
+\item Mitigated by focus on predictive validity
+\end{itemize}
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\heading{Results}
+
+\begin{frame}
+\frametitle{Main Results: Predictive Power}
+\begin{itemize}
+\item \textbf{Our pipeline (with metric learning):} AUC = \alg{0.620}
+\begin{itemize}
+\item Significant predictive power from posting content
+\end{itemize}
+
+\item \textbf{SBERT embeddings with cosine similarity:} AUC = 0.562
+\begin{itemize}
+\item Raw embeddings capture some signal
+\item Metric learning adds substantial value
+\end{itemize}
+
+\item \textbf{Random Forest on HR variables:} AUC = \alr{0.500}
+\begin{itemize}
+\item (tenure, experience, job level, proficiency ratings)
+\item No predictive power beyond random guessing
+\item Selection conditional on application explains limited power
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Selection Probability and Skill Distance}
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
+\centering
+\textbf{[INSERT FIGURE 4 FROM PAPER]} \\
+Graph showing declining selection probability as skill distance increases
+}}
+\end{center}
+
+\begin{block}{Key Finding}
+\begin{itemize}
+\item The probability of selection in the closest skill distance quintile is \alg{84\% higher} compared to the furthest quintile
+\item Clear monotonic decline across quintiles
+\item Robust to various controls and specifications
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Causal Evidence}
+\begin{enumerate}
+\item \textbf{Within-Vacancy Comparisons}
+\begin{itemize}
+\item Same vacancy, multiple applicants (261 cases)
+\item \alg{70\%} of the time, candidate with shortest skill distance was selected
+\item Conditional logit: \alr{35\% lower odds} per quintile increase in distance
+\item Controls for vacancy-specific factors
+\end{itemize}
+
+\item \textbf{Within-Applicant Comparisons}
+\begin{itemize}
+\item Same applicant, multiple applications (33 cases)
+\item \alr{50\% lower odds} for applications to more distant roles
+\item Controls for applicant-specific traits
+\end{itemize}
+\end{enumerate}
+
+\begin{block}{Implication}
+Skill distance \al{causally} impacts selection, not just correlation
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Skill Distance Distribution}
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
+\centering
+\textbf{[INSERT FIGURE 5 FROM PAPER]} \\
+Distribution of average skill distances across workers
+}}
+\end{center}
+
+\begin{block}{Heterogeneity in Skill Alignment to Opportunity Landscape}
+\begin{itemize}
+\item Workers vary significantly in their average distance to available roles
+\item This variation helps explain differences in:
+\begin{itemize}
+\item Application strategies
+\item Success rates
+\item Career mobility patterns
+\end{itemize}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Behavioral Insights}
+\begin{columns}
+\begin{column}{0.48\textwidth}
+\begin{block}{High-distance applicants}
+\begin{itemize}
+\item Apply to \alg{1.5x more roles} (exploratory search)
+\item One SD increase in average distance \so 0.61 SD increase in application distance
+\item \alr{33.5\% lower} selection odds per application
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{block}{Low-distance applicants}
+\begin{itemize}
+\item More targeted applications
+\item Higher success rates
+\item Often more passive in search behavior
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+
+\vspace{1em}
+
+\begin{block}{Actionable Insight}
+Firms can reduce search frictions (targeted recommendations) or upskill (address gaps)
+\end{block}
+\end{frame}
+
+\heading{Implications}
+
+\begin{frame}
+\frametitle{Benchmarking Against Traditional Metrics}
+\begin{block}{Random Forest models showed:}
+\begin{itemize}
+\item Skill distance explained nearly all predictable variation in selection (AUC = \alg{0.60})
+\item Traditional factors like tenure, experience, and performance ratings had \al{no predictive power} (AUC = \alr{0.50})
+\end{itemize}
+\end{block}
+
+\begin{block}{Why Traditional Measures Underperform}
+\begin{itemize}
+\item Selection conditional on application
+\item Skill alignment matters more than general qualifications
+\item Text captures richer information than structured HR data
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Bridges Between Theory and Practice}
+\begin{columns}
+\begin{column}{0.48\textwidth}
+\begin{block}{Theoretical Contributions}
+\begin{itemize}
+\item Validates job postings as containing meaningful skill signals
+\item Shows skill alignment predicts outcomes better than traditional metrics
+\item Addresses information asymmetry in internal labor markets
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{block}{Practical Applications}
+\begin{itemize}
+\item Firms can quantify skill gaps to guide:
+\begin{itemize}
+\item Internal mobility recommendations
+\item Targeted workforce development
+\item Succession planning
+\end{itemize}
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+
+\vspace{1em}
+
+\begin{center}
+\al{Our method connects organizational theory to actionable insights}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Case Study: Reducing Search Frictions}
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
+\centering
+\textbf{[INSERT VISUALIZATION]} \\
+Simple diagram showing how skill distance measurement feeds into HR applications
+}}
+\end{center}
+
+\begin{columns}
+\begin{column}{0.3\textwidth}
+\begin{block}{Challenge}
+Employee struggles to identify relevant opportunities
+\end{block}
+\end{column}
+
+\begin{column}{0.3\textwidth}
+\begin{block}{Solution}
+Skill distance analytics to:
+\begin{itemize}
+\item Recommend aligned roles
+\item Highlight specific skills to develop
+\item Design targeted learning paths
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.3\textwidth}
+\begin{block}{Outcome}
+\begin{itemize}
+\item Improved matching efficiency
+\item Reduced search time
+\item Increased mobility success rates
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Methodological Innovation}
+\begin{columns}
+\begin{column}{0.48\textwidth}
+\begin{block}{Prior Assumptions}
+\begin{itemize}
+\item Job postings are:
+\begin{itemize}
+\item Aspirational or generic
+\item Best analyzed with one-size-fits-all models
+\end{itemize}
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{block}{Our Approach}
+\begin{itemize}
+\item Learns from real decisions what postings actually signal
+\item Filters noise by focusing on dimensions that predicted outcomes
+\item Provides framework for organization-specific adaptation
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+
+\vspace{1em}
+
+\begin{center}
+\al{Framework generalizable to other domains requiring context-specific language interpretation}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Conclusion}
+\begin{itemize}
+\item First validation against real decisions: Skill distance predicts selection
+\item Outperforms traditional HR metrics (AUC \alg{0.62} vs. \alr{0.50}), resolves information asymmetry
+\item \textbf{Nuance}: Informativeness is \al{maximized} by combining embeddings (ubiquitous) with firm-specific outcomes (novel)
+\end{itemize}
+
+\begin{block}{Opens New Lens on Labor Markets}
+\begin{itemize}
+\item Skill distance shapes search behavior and outcomes
+\item Provides framework for reducing information asymmetries
+\item Advances both theory and practice of skills-based approaches
+\end{itemize}
+\end{block}
+
+\begin{block}{Impact}
+Strengthens skills-first hiring, enables data-driven workforce strategies
+\end{block}
+
+\textbf{Future work}: Generalize framework to other domains
+\end{frame}
+
+\lastslide
+
+\begin{frame}
+\frametitle{Thank You!}
+\begin{center}
+\LARGE Questions?\\
+\vspace{1cm}
+\normalsize
+Contact: \url{nikhilg@cmu.edu}
+\end{center}
+\end{frame}
+
+\end{document}
