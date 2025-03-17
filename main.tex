@@ -1,167 +1,125 @@
-\documentclass[aspectratio=169]{beamer}
-\usepackage{presentation}
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{dolphin}
+\usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{caption}
 
-\title{How Informative are Job Posting Skill Measures?}
-\subtitle{Evidence from Selection Decisions}
+\title[Job Posting Skill Measures]{How Informative are Job Posting Skill Measures?\\Evidence from Selection Decisions}
 \author{Nikhil George \and Ramayya Krishnan \and Rahul Telang}
 \institute{Carnegie Mellon University}
 \date{}
 
 \begin{document}
 
-% Title slide
 \begin{frame}
 \titlepage
 \end{frame}
 
-% Motivation
-\begin{frame}
-\frametitle{Motivation}
-
+\begin{frame}{Motivation}
 \begin{itemize}
-\item \textbf{Skills-first hiring revolution}
-  \begin{itemize}
-  \item Google, IBM, Walmart prioritize capabilities over credentials
-  \item Reducing emphasis on traditional qualifications
-  \end{itemize}
-\vspace{0.5em}
-
-\item \textbf{Job postings as unvalidated infrastructure}
-  \begin{itemize}
-  \item Powers algorithms, HR analytics, policy decisions
-  \item Assumed to reflect skill demands, but \highlight{no validation against outcomes}
-  \end{itemize}
-\vspace{0.5em}
-
-\item \textbf{Stakes are high}
-  \begin{itemize}
-  \item If uninformative: Undermines billion-dollar HR tech ecosystem
-  \item If valid: Unlocks precision in labor markets
-  \end{itemize}
+    \item \textbf{Skills-first hiring revolution}
+    \begin{itemize}
+        \item Google, IBM, Walmart prioritize capabilities over credentials
+        \item Reducing emphasis on traditional qualifications
+    \end{itemize}
+    \item \textbf{Job postings as unvalidated infrastructure}
+    \begin{itemize}
+        \item Powers algorithms, HR analytics, policy decisions
+        \item Assumed to reflect skill demands, but \textcolor{orange}{no validation against outcomes}
+    \end{itemize}
+    \item \textbf{Stakes are high}
+    \begin{itemize}
+        \item If uninformative: Undermines billion-dollar HR tech ecosystem
+        \item If valid: Unlocks precision in labor markets
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
-% The Core Gap
-\begin{frame}
-\frametitle{The Research Gap}
-
+\begin{frame}{The Research Gap}
 \begin{itemize}
-\item \textbf{Central question:} Do skill measures derived from job postings predict actual hiring decisions?
-\vspace{0.5em}
-
-\item \textbf{Skepticism about job postings}
-  \begin{itemize}
-  \item May be aspirational or templated
-  \item Could include inflated "nice-to-have" skills
-  \end{itemize}
-\vspace{0.5em}
-
-\item \textbf{Critical validation needed}
-  \begin{itemize}
-  \item Research relies on posting data without outcome validation
-  \item HR analytics industry depends on posting informativeness
-  \end{itemize}
+    \item \textbf{Central question:} Do skill measures derived from job postings predict actual hiring decisions?
+    \item \textbf{Skepticism about job postings}
+    \begin{itemize}
+        \item May be aspirational or templated
+        \item Could include inflated ``nice-to-have'' skills
+    \end{itemize}
+    \item \textbf{Critical validation needed}
+    \begin{itemize}
+        \item Research relies on posting data without outcome validation
+        \item HR analytics industry depends on posting informativeness
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
-% Research Questions
-\begin{frame}
-\frametitle{Research Questions}
-
+\begin{frame}{Research Questions}
 \begin{enumerate}
-\item Can skill distance measures built on job postings be validated against selection decisions?
-\vspace{1em}
-
-\item How informative are job postings relative to traditional HR metrics?
-\vspace{1em}
-
-\item Can analytics built on job postings reveal new insights about human capital management?
+    \item Can skill distance measures built on job postings be validated against selection decisions?
+    \item How informative are job postings relative to traditional HR metrics?
+    \item Can analytics built on job postings reveal new insights about human capital management?
 \end{enumerate}
 \end{frame}
 
-% Section divider
-\sectionpage{Research Contribution}
-
-% First Empirical Validation
-\begin{frame}
-\frametitle{First Empirical Validation of Job Posting Informativeness}
-
+\begin{frame}{Research Contribution}
+\textbf{First Empirical Validation of Job Posting Informativeness}
 \begin{itemize}
-\item \textbf{Novel approach}
-  \begin{itemize}
-  \item Skill distance metric derived solely from job text
-  \item Validated against actual selection decisions
-  \end{itemize}
-\vspace{0.5em}
-
-\item \textbf{Unique dataset}
-  \begin{itemize}
-  \item IT division of major financial firm
-  \item 8,180 job postings, 1,370 internal applications
-  \item Complete application histories
-  \end{itemize}
-\vspace{0.5em}
-
-\item \textbf{Key findings}
-  \begin{itemize}
-  \item \positive{84\% higher} selection probability for closest skill matches
-  \item \positive{70\%} of multi-applicant vacancies select closest candidate
-  \item Job text outperforms traditional HR metrics (AUC \positive{0.62} vs. \negative{0.50})
-  \end{itemize}
+    \item \textbf{Novel approach}
+    \begin{itemize}
+        \item Skill distance metric derived solely from job text
+        \item Validated against actual selection decisions
+    \end{itemize}
+    \item \textbf{Unique dataset}
+    \begin{itemize}
+        \item IT division of major financial firm
+        \item 8,180 job postings, 1,370 internal applications
+        \item Complete application histories
+    \end{itemize}
+    \item \textbf{Key findings}
+    \begin{itemize}
+        \item \textcolor{green}{84\% higher} selection probability for closest skill matches
+        \item \textcolor{green}{70\%} of multi-applicant vacancies select closest candidate
+        \item Job text outperforms traditional HR metrics (AUC \textcolor{green}{0.62} vs. \textcolor{red}{0.50})
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
-% Literature Gap
-\begin{frame}
-\frametitle{A Gap in the Literature}
-
-Prior work focuses on \highlight{extraction}, not \highlight{validation}:
-
+\begin{frame}{A Gap in the Literature}
+Prior work focuses on \textcolor{orange}{extraction}, not \textcolor{orange}{validation}:
 \begin{itemize}
-\item \textbf{Taxonomy-based approaches} (O*NET, ESCO)
-  \begin{itemize}
-  \item Static categories, misses contextual nuance
-  \end{itemize}
-\vspace{0.5em}
-
-\item \textbf{Collaborative filtering} (LinkedIn)
-  \begin{itemize}
-  \item Co-occurrence ≠ predictive validity
-  \end{itemize}
-\vspace{0.5em}
-
-\item \textbf{Credential proxies}
-  \begin{itemize}
-  \item Losing relevance in skills-first hiring
-  \end{itemize}
+    \item \textbf{Taxonomy-based approaches} (O*NET, ESCO)
+    \begin{itemize}
+        \item Static categories, misses contextual nuance
+    \end{itemize}
+    \item \textbf{Collaborative filtering} (LinkedIn)
+    \begin{itemize}
+        \item Co-occurrence predictive validity
+    \end{itemize}
+    \item \textbf{Credential proxies}
+    \begin{itemize}
+        \item Losing relevance in skills-first hiring
+    \end{itemize}
 \end{itemize}
 
 \begin{block}{Our Breakthrough}
-Outcome-grounded validation: 
-Not just what skills are listed, but which ones actually matter
+Outcome-grounded validation: Not just what skills are listed, but which ones actually matter
 \end{block}
 \end{frame}
 
-% Research Setting
-\begin{frame}
-\frametitle{Research Setting \& Data}
-
+\begin{frame}{Research Setting \& Data}
 \begin{itemize}
-\item \textbf{Internal labor market as ideal laboratory}
-  \begin{itemize}
-  \item Workers move across roles within firm
-  \item Can link current job to positions sought
-  \item Observe both successful and unsuccessful applications
-  \end{itemize}
-\vspace{0.8em}
-
-\item \textbf{Dataset overview}
-  \begin{itemize}
-  \item IT division, technology roles with precise requirements
-  \item 8,180 job postings (2018–2021)
-  \item 1,370 internal applications (650 selected, 720 rejected)
-  \end{itemize}
+    \item \textbf{Internal labor market as ideal laboratory}
+    \begin{itemize}
+        \item Workers move across roles within firm
+        \item Can link current job to positions sought
+        \item Observe both successful and unsuccessful applications
+    \end{itemize}
+    \item \textbf{Dataset overview}
+    \begin{itemize}
+        \item IT division, technology roles with precise requirements
+        \item 8,180 job postings (2018--2021)
+        \item 1,370 internal applications (650 selected, 720 rejected)
+    \end{itemize}
 \end{itemize}
 
 \begin{block}{Key Advantage}
@@ -169,314 +127,298 @@ Ability to measure skill distance between current and target roles
 \end{block}
 \end{frame}
 
-% Sample Job Comparison
-\begin{frame}
-\frametitle{Sample Job Postings Comparison}
-
-\begin{comparison}
+\begin{frame}{Sample Job Postings Comparison}
+\begin{columns}
 \begin{column}{0.48\textwidth}
 \begin{block}{Close Match (Selected)}
 \begin{itemize}
-\item \textbf{Position:} Data Engineer
-\item \textbf{Shared skills:} Data modeling, ETL, SQL
-\item \textbf{Distance drivers:} Limited architecture experience
+    \item Position: Data Engineer
+    \item Shared skills: Data modeling, ETL, SQL
+    \item Distance drivers: Limited architecture experience
 \end{itemize}
 \end{block}
 \end{column}
-
 \begin{column}{0.48\textwidth}
 \begin{block}{Distant Match (Not Selected)}
 \begin{itemize}
-\item \textbf{Position:} Full-Stack Developer
-\item \textbf{Missing skills:} Data warehousing, dimensional modeling
-\item \textbf{Different focus:} UI/UX vs. backend data
+    \item Position: Full-Stack Developer
+    \item Missing skills: Data warehousing, dimensional modeling
+    \item Different focus: UI/UX vs. backend data
 \end{itemize}
 \end{block}
 \end{column}
-\end{comparison}
+\end{columns}
 
-% Placeholder for job match visualization
-\centering
-\fbox{\parbox{0.8\textwidth}{\centering\textbf{[PLACEHOLDER]}\\ Skill Distance Visualization between Job Positions}}
-\end{frame}
-
-% Conceptual Framework
-\begin{frame}
-\frametitle{Conceptual Framework}
-
-\begin{itemize}
-\item Job descriptions encode skill requirements that matter for selection
-\item Selection decisions reveal which aspects of postings are most important
-\item Skill alignment between current and target roles predicts outcomes
-\end{itemize}
-
-\begin{block}{Key Insight}
-When an applicant seeks a position that is "distant" in required skills from their current job, they have lower probability of being selected
-\end{block}
-
+\vspace{0.5cm}
 \begin{center}
-\begin{tabular}{|l|c|}
-\hline
-\headrow
-\textbf{Applicant-Vacancy Skill Distance} & \textbf{Selection Probability} \\
-\hline
-Low (close match) & High \\
-Medium & Medium \\
-High (distant match) & Low \\
-\hline
-\end{tabular}
+\fbox{\parbox{0.9\textwidth}{
+\centering
+\textbf{Box 2.2 Sample Job Description}\\
+\small
+\textbf{Hadoop developer} for multiple initiatives. Experience in Capacity Planning, Cluster Designing. Develop Big Data Strategy and Roadmap. \\
+\textbf{Mandatory Skills:} Hadoop stack (HDFS, MapReduce, Yarn, HIVE, sqoop), Cloudera, NoSQL\\
+\textbf{Desired Skills:} Kafka, R, Python, Tableau, Data Lake with Cloudera ecosystem
+}}
 \end{center}
 \end{frame}
 
-% Section divider
-\sectionpage{Methodology}
+\begin{frame}{Conceptual Framework}
+\begin{itemize}
+    \item Job descriptions encode skill requirements that matter for selection
+    \item Selection decisions reveal which aspects of postings are most important
+    \item Skill alignment between current and target roles predicts outcomes
+\end{itemize}
 
-% Methodological Pipeline
-\begin{frame}
-\frametitle{Methodological Approach}
+\begin{block}{Key Insight}
+When an applicant seeks a position that is ``distant'' in required skills from their current job, they have lower probability of being selected
+\end{block}
 
-% Placeholder for methodology pipeline visualization
+\begin{table}
 \centering
-\fbox{\parbox{0.9\textwidth}{\centering\textbf{[PLACEHOLDER]}\\ Methodological Pipeline Visualization}}
-\vspace{1em}
-
-\begin{enumerate}
-\item \textbf{Job Posting Embeddings}
-   \begin{itemize}
-   \item SBERT contextual language model captures semantic richness
-   \item 384-dimensional vectors represent each job posting's content
-   \end{itemize}
-\vspace{0.5em}
-
-\item \textbf{Dimension Reduction}
-   \begin{itemize}
-   \item PCA + Fuzzy C-Means clustering reduces to manageable dimensions
-   \item Preserves key semantic information while removing noise
-   \end{itemize}
-\vspace{0.5em}
-
-\item \textbf{Distance Metric Learning}
-   \begin{itemize}
-   \item Reweights dimensions to reflect firm's historical hiring priorities
-   \item Stretches dimensions that differentiate selected/rejected candidates
-   \end{itemize}
-\end{enumerate}
+\begin{tabular}{l c}
+\toprule
+\textbf{Applicant-Vacancy Skill Distance} & \textbf{Selection Probability} \\
+\midrule
+Low (close match) & High \\
+Medium & Medium \\
+High (distant match) & Low \\
+\bottomrule
+\end{tabular}
+\end{table}
 \end{frame}
 
-% Metric Learning
-\begin{frame}
-\frametitle{Metric Learning: Adapting to Context}
-
-\begin{comparison}
+\begin{frame}{Methodological Approach}
+\begin{columns}
 \begin{column}{0.5\textwidth}
-\begin{itemize}
-\item Distance between jobs $j_c$ and $j_v$:
-\begin{align*}
-d(j_c, j_v; M) = \sqrt{(j_c - j_v)^T M (j_c - j_v)}
-\end{align*}
-
-\item Learn matrix $M$ that:
-\begin{itemize}
-\item Maximizes distance between non-selected pairs
-\item Minimizes distance between selected pairs
-\end{itemize}
-
-\item Reweights skill dimensions based on what the firm historically valued
-\end{itemize}
+\begin{enumerate}
+    \item \textbf{Job Posting Embeddings}
+    \begin{itemize}
+        \item SBERT model captures semantic richness
+        \item 384-dimensional vectors
+    \end{itemize}
+    \item \textbf{Dimension Reduction}
+    \begin{itemize}
+        \item PCA + Fuzzy C-Means clustering
+        \item Preserves key information
+    \end{itemize}
+    \item \textbf{Distance Metric Learning}
+    \begin{itemize}
+        \item Reweights based on priorities
+        \item Stretches differentiating dimensions
+    \end{itemize}
+\end{enumerate}
 \end{column}
-
 \begin{column}{0.5\textwidth}
+% Figure from the paper
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figure1.png}
+\caption*{Overview of measurement approach}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Metric Learning: Adapting to Context}
+\begin{columns}
+\begin{column}{0.48\textwidth}
+\begin{itemize}
+    \item Distance between jobs $j_c$ and $j_v$:
+    \begin{equation}
+    d(j_c, j_v; M) = \sqrt{(j_c - j_v)^T M(j_c - j_v)}
+    \end{equation}
+    
+    \item Learn matrix $M$ that:
+    \begin{itemize}
+        \item Maximizes distance between non-selected pairs
+        \item Minimizes distance between selected pairs
+        \item Reweights skill dimensions based on historical value
+    \end{itemize}
+\end{itemize}
+
 \begin{block}{Strength: Domain Adaptation}
-Generic embeddings (cosine similarity) treat all skills equally,\\
-metric learning \highlight{tailors to firm context}
+Generic embeddings treat all skills equally, metric learning \textcolor{orange}{tailors to firm context}
 \end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+% Figure from the paper
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figure2.png}
+\caption*{Vectorization process}
+\end{figure}
 
 \begin{block}{Limitation: Context Dependency}
 Reflects historical patterns, could perpetuate biases
 \end{block}
 \end{column}
-\end{comparison}
-
-% Placeholder for metric learning visualization
-\centering
-\fbox{\parbox{0.8\textwidth}{\centering\textbf{[PLACEHOLDER]}\\ Metric Learning Visual Concept}}
+\end{columns}
 \end{frame}
 
-% Section divider
-\sectionpage{Results}
-
-% Main Results
-\begin{frame}
-\frametitle{Predictive Power of Job Posting Content}
-
-\begin{resultstable}
-\begin{tabular}{|l|c|l|}
-\hline
-\headrow
+\begin{frame}{Predictive Power of Job Posting Content}
+\begin{columns}
+\begin{column}{0.48\textwidth}
+\begin{table}
+\centering
+\begin{tabular}{l c l}
+\toprule
 \textbf{Model} & \textbf{AUC} & \textbf{Interpretation} \\
-\hline
-Our metric learning approach & \positive{0.620} & Significant predictive power \\
-SBERT with cosine similarity & 0.562 & Some signal in raw embeddings \\
-HR variables (tenure, experience) & \negative{0.500} & No predictive power \\
-\hline
+\midrule
+Our approach & \textcolor{green}{0.620} & Significant power \\
+SBERT cosine & 0.562 & Some signal \\
+HR variables & \textcolor{red}{0.500} & No power \\
+\bottomrule
 \end{tabular}
-\end{resultstable}
-\vspace{1em}
+\end{table}
 
 \begin{block}{Key Finding}
 Job posting content has significant predictive power, outperforming traditional HR variables
 \end{block}
 
 \begin{itemize}
-\item Metric learning adds substantial value over generic embeddings
-\item Selection conditional on application explains limited power of HR variables
+    \item Metric learning adds substantial value over generic embeddings
+    \item Selection conditional on application explains limited power of HR variables
 \end{itemize}
+\end{column}
+\begin{column}{0.48\textwidth}
+% Figure from the paper
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figure3.png}
+\caption*{Cross-validated AUC scores across dimensionalities}
+\end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
-% Selection Probability
-\begin{frame}
-\frametitle{Selection Probability and Skill Distance}
-
-% Placeholder for selection probability chart
-\centering
-\fbox{\parbox{0.9\textwidth}{\centering\textbf{[PLACEHOLDER]}\\ Selection Probability by Skill Distance Quintile Visualization}}
-\vspace{1em}
-
+\begin{frame}{Selection Probability and Skill Distance}
+\begin{columns}
+\begin{column}{0.45\textwidth}
 \begin{block}{Key Result}
-Selection probability in closest skill distance quintile is \positive{84\% higher} compared to furthest quintile
+Selection probability in closest skill distance quintile is \textcolor{green}{84\% higher} compared to furthest quintile
 \end{block}
-\vspace{0.5em}
 
 \begin{itemize}
-\item Clear monotonic decline across quintiles
-\item Robust to various controls and specifications
+    \item Clear monotonic decline across quintiles
+    \item Robust to various controls and specifications
+    \item Direct evidence of job posting informativeness
 \end{itemize}
+\end{column}
+\begin{column}{0.55\textwidth}
+% Figure from the paper
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figure4.png}
+\caption*{Selection Probability by Skill Distance Quintile}
+\end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
-% Causal Evidence
-\begin{frame}
-\frametitle{Causal Evidence from Quasi-Experiments}
-
-\begin{comparison}
+\begin{frame}{Causal Evidence from Quasi-Experiments}
+\begin{columns}
 \begin{column}{0.48\textwidth}
 \begin{block}{Within-Vacancy Comparisons}
 \begin{itemize}
-\item 261 vacancies with multiple applicants
-\item \positive{70\%} select candidate with shortest distance
-\item \negative{35\% lower odds} per quintile increase in distance
+    \item 261 vacancies with multiple applicants
+    \item \textcolor{green}{70\%} select candidate with shortest distance
+    \item \textcolor{red}{35\% lower odds} per quintile increase in distance
 \end{itemize}
 \end{block}
 \end{column}
-
 \begin{column}{0.48\textwidth}
 \begin{block}{Within-Applicant Comparisons}
 \begin{itemize}
-\item 33 applicants with multiple applications
-\item \negative{50\% lower odds} for more distant roles
-\item Controls for individual traits
+    \item 33 applicants with multiple applications
+    \item \textcolor{red}{50\% lower odds} for more distant roles
+    \item Controls for individual traits
 \end{itemize}
 \end{block}
 \end{column}
-\end{comparison}
-\vspace{1em}
+\end{columns}
 
-\begin{center}
-\begin{tabular}{|l|c|}
-\hline
-\headrow
+\vspace{0.3cm}
+\begin{table}
+\centering
+\begin{tabular}{l l}
+\toprule
 \textbf{Design} & \textbf{Controls For} \\
-\hline
+\midrule
 Within-Vacancy & Vacancy-specific factors (role, team, timing) \\
 Within-Applicant & Applicant-specific factors (quality, experience) \\
-\hline
+\bottomrule
 \end{tabular}
-\end{center}
+\end{table}
 
+\vspace{0.2cm}
 \begin{center}
-Skill distance \highlight{causally} impacts selection
+\large Skill distance \textcolor{orange}{causally} impacts selection
 \end{center}
 \end{frame}
 
-% Behavioral Insights
-\begin{frame}
-\frametitle{Skill Distance Shapes Job Search Behavior}
-
-\begin{comparison}
+\begin{frame}{Skill Distance Shapes Job Search Behavior}
+\begin{columns}
 \begin{column}{0.48\textwidth}
-\begin{block}{High-distance Applicants}
+\textbf{High-distance Applicants}
 \begin{itemize}
-\item Apply to \positive{1.5x more roles}
-\item More exploratory search
-\item \negative{33.5\% lower} selection odds
+    \item Apply to \textcolor{green}{1.5x more roles}
+    \item More exploratory search
+    \item \textcolor{red}{33.5\% lower} selection odds
 \end{itemize}
-\end{block}
-\end{column}
 
+\textbf{Low-distance Applicants}
+\begin{itemize}
+    \item More targeted applications
+    \item Higher success rates
+    \item Often more passive in search
+\end{itemize}
+\end{column}
 \begin{column}{0.48\textwidth}
-\begin{block}{Low-distance Applicants}
-\begin{itemize}
-\item More targeted applications
-\item Higher success rates
-\item Often more passive in search
-\end{itemize}
-\end{block}
-\end{column}
-\end{comparison}
-\vspace{1em}
-
-% Placeholder for applicant behavior visualization
+% Figure from the paper
+\begin{figure}
 \centering
-\fbox{\parbox{0.8\textwidth}{\centering\textbf{[PLACEHOLDER]}\\ Applicant Behavior Comparison Visualization}}
+\includegraphics[width=\textwidth]{figure5.png}
+\caption*{Distribution of Average Skill Distance}
+\end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
-% Section divider
-\sectionpage{Implications}
-
-% Theory & Practice
-\begin{frame}
-\frametitle{Bridging Theory and Practice}
-
-\begin{comparison}
+\begin{frame}{Bridging Theory and Practice}
+\begin{columns}
 \begin{column}{0.48\textwidth}
-\begin{block}{Theoretical Contributions}
+\textbf{Theoretical Contributions}
 \begin{itemize}
-\item Validates job postings as informative signals
-\item Advances skills-based labor market theories
-\item Addresses information asymmetry
+    \item Validates job postings as informative signals
+    \item Advances skills-based labor market theories
+    \item Addresses information asymmetry
 \end{itemize}
-\end{block}
 \end{column}
-
 \begin{column}{0.48\textwidth}
-\begin{block}{Practical Applications}
+\textbf{Practical Applications}
 \begin{itemize}
-\item Internal mobility recommendations
-\item Targeted skill development
-\item Evidence-based succession planning
+    \item Internal mobility recommendations
+    \item Targeted skill development
+    \item Evidence-based succession planning
 \end{itemize}
-\end{block}
 \end{column}
-\end{comparison}
-\vspace{1em}
+\end{columns}
 
-\begin{center}
-\begin{tabular}{|l|l|}
-\hline
-\headrow
+\begin{table}
+\centering
+\begin{tabular}{l l}
+\toprule
 \textbf{Research Domain} & \textbf{Contribution} \\
-\hline
+\midrule
 Labor Economics & Validates key data source, quantifies skill distance \\
 HR Analytics & Provides framework for mobility analysis \\
 NLP/ML & Demonstrates domain adaptation of language models \\
-\hline
+\bottomrule
 \end{tabular}
-\end{center}
+\end{table}
 \end{frame}
 
-% Methodological Innovation
-\begin{frame}
-\frametitle{Methodological Innovation}
-
+\begin{frame}{Methodological Innovation}
 \begin{block}{Prior Assumptions}
 Job postings are aspirational or generic, best analyzed with one-size-fits-all models
 \end{block}
@@ -484,58 +426,50 @@ Job postings are aspirational or generic, best analyzed with one-size-fits-all m
 \begin{block}{Our Approach}
 Learn from real selection decisions what aspects of postings actually matter
 \end{block}
-\vspace{1em}
 
-\begin{center}
-\begin{tabular}{|l|l|}
-\hline
-\headrow
+\begin{table}
+\centering
+\begin{tabular}{l l}
+\toprule
 \textbf{Challenge} & \textbf{Our Solution} \\
-\hline
+\midrule
 Generic embeddings miss context & Metric learning adapts to organization \\
-"Noise" in job descriptions & Selection decisions reveal what matters \\
+``Noise'' in job descriptions & Selection decisions reveal what matters \\
 Historical biases in hiring & Focus on predictive validity, not prescription \\
-\hline
+\bottomrule
 \end{tabular}
-\end{center}
-\vspace{1em}
+\end{table}
 
-Framework is generalizable to other domains requiring
-context-specific language interpretation
+Framework is generalizable to other domains requiring context-specific language interpretation
 \end{frame}
 
-% Conclusion
-\begin{frame}
-\frametitle{Conclusion}
-
+\begin{frame}{Conclusion}
 \begin{itemize}
-\item First validation against real decisions: Job postings are highly informative
-\item Outperforms traditional HR metrics (AUC \positive{0.62} vs. \negative{0.50})
-\item Informativeness maximized by combining generic embeddings with firm-specific outcomes
+    \item First validation against real decisions: Job postings are highly informative
+    \item Outperforms traditional HR metrics (AUC \textcolor{green}{0.62} vs. \textcolor{red}{0.50})
+    \item Informativeness maximized by combining generic embeddings with firm-specific outcomes
 \end{itemize}
 
 \begin{block}{Opens New Lens on Labor Markets}
 \begin{itemize}
-\item Skill distance shapes search behavior and outcomes
-\item Enables data-driven workforce strategies
-\item Strengthens case for skills-first hiring approaches
+    \item Skill distance shapes search behavior and outcomes
+    \item Enables data-driven workforce strategies
+    \item Strengthens case for skills-first hiring approaches
 \end{itemize}
 \end{block}
 
-\begin{center}
-\highlight{Our validation transforms job postings from static text into a dynamic, validated signal for labor market decisions}
-\end{center}
+Our validation transforms job postings from static text into a dynamic, validated signal for labor market decisions
 \end{frame}
 
-% Thank You
 \begin{frame}
-\frametitle{Thank You!}
-\begin{center}
-\LARGE Questions?\\
-\vspace{1cm}
-\normalsize
-Contact: nikhilg@cmu.edu
-\end{center}
+\centering
+\huge Thank You!
+
+\vspace{2em}
+\Large Questions?
+
+\vspace{2em}
+\normalsize Contact: nikhilg@cmu.edu
 \end{frame}
 
 \end{document}
