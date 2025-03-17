@@ -173,11 +173,7 @@ Ability to measure skill distance between current and target roles
 \begin{frame}
 \frametitle{Sample Job Postings Comparison}
 
-\begin{center}
-\textbf{Target Position: Senior Data Architect}
-\end{center}
-
-\begin{columns}
+\begin{comparison}
 \begin{column}{0.48\textwidth}
 \begin{block}{Close Match (Selected)}
 \begin{itemize}
@@ -197,7 +193,11 @@ Ability to measure skill distance between current and target roles
 \end{itemize}
 \end{block}
 \end{column}
-\end{columns}
+\end{comparison}
+
+% Placeholder for job match visualization
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering\textbf{[PLACEHOLDER]}\\ Skill Distance Visualization between Job Positions}}
 \end{frame}
 
 % Conceptual Framework
@@ -217,6 +217,7 @@ When an applicant seeks a position that is "distant" in required skills from the
 \begin{center}
 \begin{tabular}{|l|c|}
 \hline
+\headrow
 \textbf{Applicant-Vacancy Skill Distance} & \textbf{Selection Probability} \\
 \hline
 Low (close match) & High \\
@@ -233,6 +234,11 @@ High (distant match) & Low \\
 % Methodological Pipeline
 \begin{frame}
 \frametitle{Methodological Approach}
+
+% Placeholder for methodology pipeline visualization
+\centering
+\fbox{\parbox{0.9\textwidth}{\centering\textbf{[PLACEHOLDER]}\\ Methodological Pipeline Visualization}}
+\vspace{1em}
 
 \begin{enumerate}
 \item \textbf{Job Posting Embeddings}
@@ -254,12 +260,6 @@ High (distant match) & Low \\
    \item Reweights dimensions to reflect firm's historical hiring priorities
    \item Stretches dimensions that differentiate selected/rejected candidates
    \end{itemize}
-\vspace{0.5em}
-
-\item \textbf{Validation}
-   \begin{itemize}
-   \item AUC 0.62 on held-out data using learned metric
-   \end{itemize}
 \end{enumerate}
 \end{frame}
 
@@ -267,7 +267,7 @@ High (distant match) & Low \\
 \begin{frame}
 \frametitle{Metric Learning: Adapting to Context}
 
-\begin{columns}
+\begin{comparison}
 \begin{column}{0.5\textwidth}
 \begin{itemize}
 \item Distance between jobs $j_c$ and $j_v$:
@@ -295,7 +295,11 @@ metric learning \highlight{tailors to firm context}
 Reflects historical patterns, could perpetuate biases
 \end{block}
 \end{column}
-\end{columns}
+\end{comparison}
+
+% Placeholder for metric learning visualization
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering\textbf{[PLACEHOLDER]}\\ Metric Learning Visual Concept}}
 \end{frame}
 
 % Section divider
@@ -305,9 +309,10 @@ Reflects historical patterns, could perpetuate biases
 \begin{frame}
 \frametitle{Predictive Power of Job Posting Content}
 
-\begin{center}
+\begin{resultstable}
 \begin{tabular}{|l|c|l|}
 \hline
+\headrow
 \textbf{Model} & \textbf{AUC} & \textbf{Interpretation} \\
 \hline
 Our metric learning approach & \positive{0.620} & Significant predictive power \\
@@ -315,7 +320,7 @@ SBERT with cosine similarity & 0.562 & Some signal in raw embeddings \\
 HR variables (tenure, experience) & \negative{0.500} & No predictive power \\
 \hline
 \end{tabular}
-\end{center}
+\end{resultstable}
 \vspace{1em}
 
 \begin{block}{Key Finding}
@@ -332,19 +337,9 @@ Job posting content has significant predictive power, outperforming traditional 
 \begin{frame}
 \frametitle{Selection Probability and Skill Distance}
 
-\begin{center}
-\begin{tabular}{|l|c|}
-\hline
-\textbf{Skill Distance Quintile} & \textbf{Relative Selection Probability} \\
-\hline
-Q1 (Closest) & \positive{+84\%} \\
-Q2 & \positive{+52\%} \\
-Q3 & Reference \\
-Q4 & \negative{-25\%} \\
-Q5 (Furthest) & \negative{-46\%} \\
-\hline
-\end{tabular}
-\end{center}
+% Placeholder for selection probability chart
+\centering
+\fbox{\parbox{0.9\textwidth}{\centering\textbf{[PLACEHOLDER]}\\ Selection Probability by Skill Distance Quintile Visualization}}
 \vspace{1em}
 
 \begin{block}{Key Result}
@@ -362,7 +357,7 @@ Selection probability in closest skill distance quintile is \positive{84\% highe
 \begin{frame}
 \frametitle{Causal Evidence from Quasi-Experiments}
 
-\begin{columns}
+\begin{comparison}
 \begin{column}{0.48\textwidth}
 \begin{block}{Within-Vacancy Comparisons}
 \begin{itemize}
@@ -382,12 +377,13 @@ Selection probability in closest skill distance quintile is \positive{84\% highe
 \end{itemize}
 \end{block}
 \end{column}
-\end{columns}
+\end{comparison}
 \vspace{1em}
 
 \begin{center}
 \begin{tabular}{|l|c|}
 \hline
+\headrow
 \textbf{Design} & \textbf{Controls For} \\
 \hline
 Within-Vacancy & Vacancy-specific factors (role, team, timing) \\
@@ -405,7 +401,7 @@ Skill distance \highlight{causally} impacts selection
 \begin{frame}
 \frametitle{Skill Distance Shapes Job Search Behavior}
 
-\begin{columns}
+\begin{comparison}
 \begin{column}{0.48\textwidth}
 \begin{block}{High-distance Applicants}
 \begin{itemize}
@@ -425,20 +421,12 @@ Skill distance \highlight{causally} impacts selection
 \end{itemize}
 \end{block}
 \end{column}
-\end{columns}
+\end{comparison}
 \vspace{1em}
 
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-\textbf{Measure} & \textbf{High-Distance Workers} & \textbf{Low-Distance Workers} \\
-\hline
-Application Volume & \positive{Higher (1.5x)} & Lower \\
-Application Distance & More variable & Less variable \\
-Selection Rate & \negative{Lower} & Higher \\
-\hline
-\end{tabular}
-\end{center}
+% Placeholder for applicant behavior visualization
+\centering
+\fbox{\parbox{0.8\textwidth}{\centering\textbf{[PLACEHOLDER]}\\ Applicant Behavior Comparison Visualization}}
 \end{frame}
 
 % Section divider
@@ -448,7 +436,7 @@ Selection Rate & \negative{Lower} & Higher \\
 \begin{frame}
 \frametitle{Bridging Theory and Practice}
 
-\begin{columns}
+\begin{comparison}
 \begin{column}{0.48\textwidth}
 \begin{block}{Theoretical Contributions}
 \begin{itemize}
@@ -468,12 +456,13 @@ Selection Rate & \negative{Lower} & Higher \\
 \end{itemize}
 \end{block}
 \end{column}
-\end{columns}
+\end{comparison}
 \vspace{1em}
 
 \begin{center}
 \begin{tabular}{|l|l|}
 \hline
+\headrow
 \textbf{Research Domain} & \textbf{Contribution} \\
 \hline
 Labor Economics & Validates key data source, quantifies skill distance \\
@@ -500,6 +489,7 @@ Learn from real selection decisions what aspects of postings actually matter
 \begin{center}
 \begin{tabular}{|l|l|}
 \hline
+\headrow
 \textbf{Challenge} & \textbf{Our Solution} \\
 \hline
 Generic embeddings miss context & Metric learning adapts to organization \\
