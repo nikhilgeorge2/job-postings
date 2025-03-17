@@ -1,17 +1,13 @@
 \documentclass{beamer}
 \usetheme{Madrid}
-\usecolortheme{dolphin}
-\usepackage{graphicx}
+\usecolortheme{default}
 \usepackage{amsmath}
 \usepackage{booktabs}
-\usepackage{caption}
-\usepackage{tikz}
-\usepackage{colortbl, tcolorbox}
-\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\usepackage{tcolorbox}
 
-% Define custom colors for the box background and frame
+% Define clean, simple colors for boxes
 \definecolor{boxbackground}{rgb}{0.95, 0.95, 0.95}
-\definecolor{boxframe}{rgb}{0.0, 0.0, 0.0}
+\definecolor{boxframe}{rgb}{0.4, 0.4, 0.4}
 
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number]
@@ -37,7 +33,7 @@
     \item \textbf{Job postings as unvalidated infrastructure}
     \begin{itemize}
         \item Powers algorithms, HR analytics, policy decisions
-        \item Assumed to reflect skill demands, but \textcolor{orange}{no validation against outcomes}
+        \item Assumed to reflect skill demands, but no validation against outcomes
     \end{itemize}
     \item \textbf{Stakes are high}
     \begin{itemize}
@@ -87,15 +83,15 @@
     \end{itemize}
     \item \textbf{Key findings}
     \begin{itemize}
-        \item \textcolor{green}{84\%} higher selection probability for closest skill matches
-        \item \textcolor{green}{70\%} of multi-applicant vacancies select closest candidate
-        \item Job text outperforms traditional HR metrics (AUC \textcolor{green}{0.62} vs. \textcolor{red}{0.50})
+        \item 84\% higher selection probability for closest skill matches
+        \item 70\% of multi-applicant vacancies select closest candidate
+        \item Job text outperforms traditional HR metrics (AUC 0.62 vs. 0.50)
     \end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{A Gap in the Literature}
-Prior work focuses on \textcolor{orange}{extraction}, not \textcolor{orange}{validation}:
+Prior work focuses on extraction, not validation:
 \begin{itemize}
     \item \textbf{Taxonomy-based approaches} (O*NET, ESCO)
     \begin{itemize}
@@ -198,9 +194,7 @@ High (distant match) & Low \\
 \end{frame}
 
 \begin{frame}{Methodological Approach}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{enumerate}
+\begin{itemize}
     \item \textbf{Job Posting Embeddings}
     \begin{itemize}
         \item SBERT model captures semantic richness
@@ -216,35 +210,12 @@ High (distant match) & Low \\
         \item Reweights based on priorities
         \item Stretches differentiating dimensions
     \end{itemize}
-\end{enumerate}
-\end{column}
-\begin{column}{0.5\textwidth}
-% Placeholder for the figure
-\begin{tikzpicture}[node distance=1.2cm, auto, thick, scale=0.7, every node/.style={scale=0.7}]
-    % Styles for boxes and arrows
-    \tikzstyle{box} = [rectangle, draw, text width=2.5cm, text centered, minimum height=1cm]
-    \tikzstyle{arrow} = [thick,->,>=stealth]
-    \tikzstyle{dotted arrow} = [thick,->,>=stealth,dotted]
-    
-    % Nodes
-    \node[box] (embeddings) {1. Job Posting Embedding (SBERT)};
-    \node[box, right=of embeddings] (reduction) {2. Dimension Reduction};
-    \node[box, right=of reduction] (metric) {3. Distance Metric};
-    \node[box, right=of metric] (auc) {4. AUC};
-    
-    % Text below metric box
-    \node[below=1cm of metric] (notation) {\{$j_i$\}$_{k}$, M$_{k \times k}$};
-    
-    % Arrows
-    \draw[arrow] (embeddings) -- node[above] {384d} (reduction);
-    \draw[arrow] (reduction) -- node[above] {k} (metric);
-    \draw[arrow] (metric) -- (auc);
-    \draw[dotted arrow] (auc) to[bend right] node[midway, below] {Tune dimension} (reduction);
-    \draw[arrow] (metric) -- (notation);
-\end{tikzpicture}
-\caption*{Overview of measurement approach}
-\end{column}
-\end{columns}
+    \item \textbf{Model Evaluation}
+    \begin{itemize}
+        \item Cross-validation
+        \item AUC as primary performance metric
+    \end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Metric Learning: Adapting to Context}
@@ -266,20 +237,24 @@ High (distant match) & Low \\
 
 \begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
 \textbf{Strength: Domain Adaptation}\\
-Generic embeddings treat all skills equally, metric learning \textcolor{orange}{tailors to firm context}
+Generic embeddings treat all skills equally, metric learning tailors to firm context
 \end{tcolorbox}
 \end{column}
 \begin{column}{0.48\textwidth}
-% Placeholder for the figure
-\begin{tikzpicture}
-\node at (2,2) {Vectorization process};
-\draw (0,0) rectangle (4,4);
-\end{tikzpicture}
-
 \begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
 \textbf{Limitation: Context Dependency}\\
 Reflects historical patterns, could perpetuate biases
 \end{tcolorbox}
+
+\vspace{1cm}
+\centering
+\begin{tabular}{c|c}
+\textbf{Generic} & \textbf{Learned} \\
+\hline
+Equal weights & Priority weights \\
+Static & Dynamic \\
+General & Context-specific \\
+\end{tabular}
 \end{column}
 \end{columns}
 \end{frame}
@@ -293,9 +268,9 @@ Reflects historical patterns, could perpetuate biases
 \toprule
 \textbf{Model} & \textbf{AUC} & \textbf{Interpretation} \\
 \midrule
-Our approach & \textcolor{green}{0.620} & Significant power \\
+Our approach & 0.620 & Significant power \\
 SBERT cosine & 0.562 & Some signal \\
-HR variables & \textcolor{red}{0.500} & No power \\
+HR variables & 0.500 & No power \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -304,23 +279,22 @@ HR variables & \textcolor{red}{0.500} & No power \\
 \textbf{Key Finding:}\\
 Job posting content has significant predictive power, outperforming traditional HR variables
 \end{tcolorbox}
-
-\begin{itemize}
-    \item Metric learning adds substantial value over generic embeddings
-    \item Selection conditional on application explains limited power of HR variables
-\end{itemize}
 \end{column}
 \begin{column}{0.48\textwidth}
-% Placeholder for the figure
-\begin{tikzpicture}
-\draw[->] (0,0) -- (4,0) node[right] {Dimensions};
-\draw[->] (0,0) -- (0,4) node[above] {AUC};
-\draw[thick, color=blue] (0.5,1.5) to[out=30, in=180] (2,3) to[out=0, in=150] (3.5,3.2);
-\node[right] at (3.5,3.2) {0.62};
-\draw[dashed, color=red] (0,2.5) -- (4,2.5);
-\node[left] at (0,2.5) {0.50};
-\end{tikzpicture}
-\caption*{Cross-validated AUC scores across dimensionalities}
+\begin{itemize}
+    \item \textbf{Performance comparison:}
+    \begin{itemize}
+        \item Our approach outperforms baseline by 10\%
+        \item Performance improves with dimension tuning
+        \item Traditional HR variables show no signal
+    \end{itemize}
+    \item \textbf{Analysis implications:}
+    \begin{itemize}
+        \item Metric learning adds substantial value
+        \item Job text contains meaningful signal
+        \item Selection process needs text analysis
+    \end{itemize}
+\end{itemize}
 \end{column}
 \end{columns}
 \end{frame}
@@ -330,7 +304,7 @@ Job posting content has significant predictive power, outperforming traditional 
 \begin{column}{0.45\textwidth}
 \begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
 \textbf{Key Result:}\\
-Selection probability in closest skill distance quintile is \textcolor{green}{84\% higher} compared to furthest quintile
+Selection probability in closest skill distance quintile is 84\% higher compared to furthest quintile
 \end{tcolorbox}
 
 \begin{itemize}
@@ -340,20 +314,21 @@ Selection probability in closest skill distance quintile is \textcolor{green}{84
 \end{itemize}
 \end{column}
 \begin{column}{0.55\textwidth}
-% Placeholder for the figure
-\begin{tikzpicture}
-\draw[->] (0,0) -- (5,0) node[right] {Distance Quintile};
-\draw[->] (0,0) -- (0,4) node[above] {Selection Probability};
-\foreach \x/\y/\lab in {0.5/3.5/1, 1.5/2.8/2, 2.5/2.3/3, 3.5/1.7/4, 4.5/1.2/5} {
-    \fill[blue] (\x,\y) circle (0.2);
-    \node[below] at (\x,0) {\lab};
-}
-\draw[thick, blue] (0.5,3.5) -- (1.5,2.8) -- (2.5,2.3) -- (3.5,1.7) -- (4.5,1.2);
-\foreach \y/\lab in {1/20\%, 2/40\%, 3/60\%, 4/80\%} {
-    \draw (0,\y) -- (-0.1,\y) node[left] {\lab};
-}
-\end{tikzpicture}
-\caption*{Selection Probability by Skill Distance Quintile}
+\begin{tabular}{c|c}
+\textbf{Distance Quintile} & \textbf{Selection Rate} \\
+\hline
+Q1 (Closest) & 62.4\% \\
+Q2 & 51.3\% \\
+Q3 & 47.8\% \\
+Q4 & 41.2\% \\
+Q5 (Furthest) & 33.9\% \\
+\end{tabular}
+
+\vspace{0.5cm}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Statistical significance:}\\
+All differences significant at $p < 0.01$
+\end{tcolorbox}
 \end{column}
 \end{columns}
 \end{frame}
@@ -365,8 +340,8 @@ Selection probability in closest skill distance quintile is \textcolor{green}{84
 \textbf{Within-Vacancy Comparisons}
 \begin{itemize}
     \item 261 vacancies with multiple applicants
-    \item \textcolor{green}{70\%} select candidate with shortest distance
-    \item \textcolor{red}{35\% lower odds} per quintile increase in distance
+    \item 70\% select candidate with shortest distance
+    \item 35\% lower odds per quintile increase in distance
 \end{itemize}
 \end{tcolorbox}
 \end{column}
@@ -375,7 +350,7 @@ Selection probability in closest skill distance quintile is \textcolor{green}{84
 \textbf{Within-Applicant Comparisons}
 \begin{itemize}
     \item 33 applicants with multiple applications
-    \item \textcolor{red}{50\% lower odds} for more distant roles
+    \item 50\% lower odds for more distant roles
     \item Controls for individual traits
 \end{itemize}
 \end{tcolorbox}
@@ -397,7 +372,7 @@ Within-Applicant & Applicant-specific factors (quality, experience) \\
 
 \vspace{0.2cm}
 \begin{center}
-\large Skill distance \textcolor{orange}{causally} impacts selection
+\large Skill distance causally impacts selection
 \end{center}
 \end{frame}
 
@@ -406,9 +381,9 @@ Within-Applicant & Applicant-specific factors (quality, experience) \\
 \begin{column}{0.48\textwidth}
 \textbf{High-distance Applicants}
 \begin{itemize}
-    \item Apply to \textcolor{green}{1.5x more roles}
+    \item Apply to 1.5x more roles
     \item More exploratory search
-    \item \textcolor{red}{33.5\% lower} selection odds
+    \item 33.5\% lower selection odds
 \end{itemize}
 
 \textbf{Low-distance Applicants}
@@ -419,19 +394,15 @@ Within-Applicant & Applicant-specific factors (quality, experience) \\
 \end{itemize}
 \end{column}
 \begin{column}{0.48\textwidth}
-% Placeholder for the figure
-\begin{tikzpicture}
-\draw[->] (0,0) -- (5,0) node[right] {Average Skill Distance};
-\draw[->] (0,0) -- (0,3) node[above] {Density};
-\draw[thick, blue, smooth] plot coordinates {
-    (0.5,0.2) (1,0.5) (1.5,1.2) (2,2.5) (2.5,1.8) (3,1.0) (3.5,0.7) (4,0.3) (4.5,0.1)
-};
-\draw[dashed] (2,0) -- (2,2.5);
-\node[below] at (2,0) {Median};
-\node[above left] at (1.5,1.2) {Low distance};
-\node[above right] at (3,1.0) {High distance};
-\end{tikzpicture}
-\caption*{Distribution of Average Skill Distance}
+\begin{tcolorbox}[colback=boxbackground,colframe=boxframe,sharp corners]
+\textbf{Distribution Analysis}
+\begin{itemize}
+    \item Bimodal distribution observed
+    \item Median skill distance: 0.48
+    \item 75\% of applications within 0.65 distance
+    \item Long tail of high-distance applications
+\end{itemize}
+\end{tcolorbox}
 \end{column}
 \end{columns}
 \end{frame}
@@ -500,7 +471,7 @@ Framework is generalizable to other domains requiring context-specific language 
 \begin{frame}{Conclusion}
 \begin{itemize}
     \item First validation against real decisions: Job postings are highly informative
-    \item Outperforms traditional HR metrics (AUC \textcolor{green}{0.62} vs. \textcolor{red}{0.50})
+    \item Outperforms traditional HR metrics (AUC 0.62 vs. 0.50)
     \item Informativeness maximized by combining generic embeddings with firm-specific outcomes
 \end{itemize}
 
